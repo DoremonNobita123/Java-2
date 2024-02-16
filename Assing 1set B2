@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class SortedIntegers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Set<Integer> integerSet = new TreeSet<>();
+
+        System.out.print("Enter the number of integers (n): ");
+        int n = scanner.nextInt();
+
+        System.out.println("Enter " + n + " integers:");
+
+        for (int i = 0; i < n; i++) {
+            int num = scanner.nextInt();
+            integerSet.add(num);
+        }
+
+        System.out.println("Sorted integers without duplicates:");
+        for (int num : integerSet) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        scanner.close();
+    }
+}
