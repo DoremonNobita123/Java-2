@@ -1,0 +1,102 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class CityList {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> cities = new ArrayList<>();
+
+        System.out.print("Enter the number of cities: ");
+        int n = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        // Accept names of 'n' cities
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter city name " + (i + 1) + ": ");
+            String cityName = scanner.nextLine();
+            cities.add(cityName);
+        }
+
+        // Display the contents of the array list
+        System.out.println("\nCities in the list:");
+        for (String city : cities) {
+            System.out.println(city);
+        }
+
+        // Remove all elements
+        cities.clear();
+
+        System.out.println("\nAll elements have been removed from the list.");
+    }
+}
+
+#2
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class FriendsList {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        LinkedList<String> friends = new LinkedList<>();
+
+        System.out.print("Enter the number of friends: ");
+        int n = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        // Accept names of 'n' friends
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter friend name " + (i + 1) + ": ");
+            String friendName = scanner.nextLine();
+            friends.add(friendName);
+        }
+
+        // Display the contents of the linked list
+        System.out.println("\nFriends in the list:");
+        for (String friend : friends) {
+            System.out.println(friend);
+        }
+    }
+}
+#3
+import java.util.TreeSet;
+
+public class ColorTreeSet {
+    public static void main(String[] args) {
+        TreeSet<String> colors = new TreeSet<>();
+
+        // Add some colors to the TreeSet
+        colors.add("Red");
+        colors.add("Blue");
+        colors.add("Green");
+        colors.add("Yellow");
+        colors.add("Orange");
+
+        // Print out the TreeSet
+        System.out.println("TreeSet of colors:");
+        for (String color : colors) {
+            System.out.println(color);
+        }
+    }
+}
+
+#4
+import java.util.Hashtable;
+
+public class ContactHashTable {
+    public static void main(String[] args) {
+        Hashtable<String, String> contacts = new Hashtable<>();
+
+        // Adding contacts to the Hashtable
+        contacts.put("1234567890", "Alice");
+        contacts.put("9876543210", "Bob");
+        contacts.put("7890123456", "Charlie");
+        contacts.put("4567890123", "David");
+
+        // Displaying the contacts
+        System.out.println("Contacts:");
+        for (String mobileNumber : contacts.keySet()) {
+            String studentName = contacts.get(mobileNumber);
+            System.out.println("Mobile Number: " + mobileNumber + ", Student Name: " + studentName);
+        }
+    }
+}
