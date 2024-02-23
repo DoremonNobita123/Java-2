@@ -1,0 +1,63 @@
+import javax.swing.*;
+import java.awt.*;
+import java.sql.*;
+
+public class ProjectTableApp extends JFrame {
+    private JTable table;
+    private JScrollPane scrollPane;
+
+    public ProjectTableApp() {
+        setTitle("Project Table");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+
+        table = new JTable();
+        scrollPane = new JScrollPane(table);
+        add(scrollPane, BorderLayout.CENTER);
+
+        try {
+            // Establish connection to your database
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/your_database", "username", "password");
+
+            // Fetch data from the PROJECT table
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM PROJECT");
+
+            // Create a TableModel to hold the data
+            DefaultTableModel model = new DefaultTableModel();
+
+            // Add columns to the model
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            for (int i = 1; i <= columnCount; i++) {
+                model.addColumn(metaData.getColumnName(i));
+            }
+
+            // Add rows to the model
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = rs.getObject(i);
+                }
+                model.addRow(row);
+            }
+
+            // Set the model to the table
+            table.setModel(model);
+
+            // Close resources
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(ProjectTableApp::new);
+    }
+}
